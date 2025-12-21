@@ -53,6 +53,11 @@ const HeroSection = () => {
                 Contact Me
               </a>
             </Button>
+            <Button variant="outline" size="xl" asChild>
+              <a href="/resume.pdf" target="_blank" rel="noreferrer" download>
+                Download Resume
+              </a>
+            </Button>
           </div>
 
           {/* Quick Stats */}
