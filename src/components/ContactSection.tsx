@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Mail, Phone, Linkedin, Github, Instagram, Send, MapPin } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, Instagram, Send, MapPin, Loader2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-
+import { supabase } from '@/integrations/supabase/client';
 const contactInfo = [
   {
     icon: Mail,
@@ -54,15 +54,49 @@ const ContactSection = () => {
     email: '',
     message: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend
-    toast({
-      title: "Message Sent! 🚀",
-      description: "Thanks for reaching out! I'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', message: '' });
+    
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: {
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        },
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out! I'll get back to you soon.",
+      });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error: any) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Failed to send",
+        description: "Something went wrong. Please try again or email directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -193,9 +227,18 @@ const ContactSection = () => {
                     className="bg-secondary/50 border-border focus:border-primary resize-none"
                   />
                 </div>
-                <Button type="submit" variant="cyber" size="lg" className="w-full">
-                  Send Message
-                  <Send className="w-4 h-4 ml-2" />
+                <Button type="submit" variant="cyber" size="lg" className="w-full" disabled={isLoading}>
+                  {isLoading ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send className="w-4 h-4 ml-2" />
+                    </>
+                  )}
                 </Button>
               </form>
             </div>
