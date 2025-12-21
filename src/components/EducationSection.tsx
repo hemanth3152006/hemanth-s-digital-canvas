@@ -1,0 +1,106 @@
+import { GraduationCap, School } from 'lucide-react';
+
+const educationData = [
+  {
+    icon: GraduationCap,
+    degree: 'BE – Computer Science & Engineering (Cyber Security)',
+    institution: "St. Joseph's College of Engineering",
+    location: 'Chennai',
+    period: '2024 – 2028',
+    status: 'Currently Pursuing',
+    isCurrent: true,
+  },
+  {
+    icon: School,
+    degree: 'Higher Secondary Education',
+    institution: 'Velammal',
+    location: 'Chennai',
+    period: 'Completed',
+    status: 'Completed',
+    isCurrent: false,
+  },
+  {
+    icon: School,
+    degree: 'Primary & Secondary Education',
+    institution: 'Vani Vidyalaya',
+    location: 'Chennai',
+    period: 'Completed',
+    status: 'Completed',
+    isCurrent: false,
+  },
+];
+
+const EducationSection = () => {
+  return (
+    <section id="education" className="section-padding relative overflow-hidden bg-secondary/20">
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <span className="font-mono text-primary text-sm tracking-wider">// EDUCATION</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
+              Academic <span className="gradient-text">Journey</span>
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full" />
+          </div>
+
+          {/* Timeline */}
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/30" />
+
+            {educationData.map((edu, index) => {
+              const IconComponent = edu.icon;
+              return (
+                <div
+                  key={index}
+                  className={`relative flex items-center mb-12 last:mb-0 ${
+                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  {/* Timeline Dot */}
+                  <div className="absolute left-8 md:left-1/2 -translate-x-1/2 z-10">
+                    <div className={`w-4 h-4 rounded-full ${edu.isCurrent ? 'bg-primary animate-pulse-glow' : 'bg-accent'}`} />
+                  </div>
+
+                  {/* Content Card */}
+                  <div className={`ml-20 md:ml-0 md:w-[calc(50%-3rem)] ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+                    <div className={`p-6 rounded-2xl card-gradient border border-border hover:border-primary/50 transition-all duration-300 group ${edu.isCurrent ? 'glow-primary' : ''}`}>
+                      <div className="flex items-start gap-4">
+                        <div className={`p-3 rounded-xl ${edu.isCurrent ? 'bg-primary text-primary-foreground' : 'bg-secondary text-primary'} transition-all`}>
+                          <IconComponent className="w-6 h-6" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            {edu.isCurrent && (
+                              <span className="px-2 py-0.5 text-xs font-mono bg-primary/20 text-primary rounded-full">
+                                Current
+                              </span>
+                            )}
+                          </div>
+                          <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
+                            {edu.degree}
+                          </h3>
+                          <p className="text-muted-foreground mb-2">{edu.institution}</p>
+                          <div className="flex items-center gap-4 text-sm text-muted-foreground/70">
+                            <span>{edu.location}</span>
+                            <span className="text-primary">•</span>
+                            <span className="font-mono">{edu.period}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default EducationSection;
