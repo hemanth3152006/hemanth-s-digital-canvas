@@ -30,7 +30,7 @@ const socialLinks = [
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    href: 'https://linkedin.com/in/hemanth-g',
+    href: 'https://www.linkedin.com/in/hemanth-g-6184191b2/',
     username: 'Hemanth G',
   },
   {
