@@ -31,12 +31,11 @@ const skills = [
   },
   {
     icon: Brain,
-    name: 'Prompt Engineering',
+    name: 'vibe coder AI Prompt Engineering',
     level: 95,
     description: 'Best Prompter - Mastering AI interactions',
     color: 'primary',
   },
-  {
     icon: Wrench,
     name: 'Creative Problem Solving',
     level: 88,
@@ -45,17 +44,18 @@ const skills = [
   },
 ];
 
-const SkillsSection = () => {
+function SkillsSection() {
   return (
     <section id="skills" className="section-padding relative overflow-hidden bg-secondary/20">
       <div className="absolute top-0 left-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="font-mono text-primary text-sm tracking-wider">// SKILLS</span>
+            <span className="font-mono text-primary text-sm tracking-wider"> // SKILLS</span>
+        // SKILLS</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
               My <span className="gradient-text">Toolkit</span>
             </h2>
@@ -67,7 +67,7 @@ const SkillsSection = () => {
             {skills.map((skill, index) => {
               const IconComponent = skill.icon;
               const isPrimary = skill.color === 'primary';
-              
+
               return (
                 <div
                   key={skill.name}
@@ -97,8 +97,7 @@ const SkillsSection = () => {
                     <div className="h-2 bg-secondary rounded-full overflow-hidden">
                       <div
                         className={`h-full rounded-full transition-all duration-1000 ${isPrimary ? 'bg-gradient-to-r from-primary to-primary/60' : 'bg-gradient-to-r from-accent to-accent/60'}`}
-                        style={{ width: `${skill.level}%` }}
-                      />
+                        style={{ width: `${skill.level}%` }} />
                     </div>
                   </div>
                 </div>
@@ -120,6 +119,6 @@ const SkillsSection = () => {
       </div>
     </section>
   );
-};
+}
 
 export default SkillsSection;
