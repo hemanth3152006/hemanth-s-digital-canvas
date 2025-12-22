@@ -22,9 +22,9 @@ const services = [
   },
   {
     icon: Brain,
-    title: 'Prompt Engineering',
+    title: 'vibe coder AI Prompt Engineering',
     description: 'Creating effective AI prompts for productivity and creativity. Helping you leverage AI tools to their full potential.',
-    features: ['AI Optimization', 'Custom Prompts', 'Workflow Automation', 'ChatGPT/Claude'],
+    features: ['AI Optimization', 'Custom Prompts', 'Workflow Automation', 'ChatGPT/Claude', 'lovable.ai', 'boltgpt.com'],
   },
 ];
 
