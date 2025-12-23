@@ -32,7 +32,7 @@ const Footer = () => {
 
             {/* Copyright */}
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-              <span>© {currentYear} Hemanth G. Made with</span>
+              <span>© {currentYear} Hemanth G Made with</span>
               <Heart className="w-4 h-4 text-destructive animate-pulse" />
               <span>in Chennai</span>
             </div>

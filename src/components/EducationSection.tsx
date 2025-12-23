@@ -1,5 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { GraduationCap, School } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './ui/dialog';
 
 const educationData = [
   {
@@ -14,16 +22,17 @@ const educationData = [
   {
     icon: School,
     degree: 'Higher Secondary Education',
-    institution: 'Velammal',
+    institution: 'Velammal Matriculation Higher Secondary School',
     location: 'Chennai',
     period: '2022-2024',
     status: 'Completed',
+    group: 'Computer Science',
     isCurrent: false,
   },
   {
     icon: School,
     degree: 'Primary & Secondary Education',
-    institution: 'Vani Vidyalaya',
+    institution: 'Vani Vidyalaya Senior Secondary & Junior College',
     location: 'Chennai',
     period: '2013-2022',
     status: 'Completed',
@@ -83,6 +92,10 @@ const EducationSection = () => {
 
             {educationData.map((edu, index) => {
               const IconComponent = edu.icon;
+              const yearsMatch = edu.period.match(/(\d{4})\D+(\d{4})/);
+              const totalYears = yearsMatch
+                ? parseInt(yearsMatch[2], 10) - parseInt(yearsMatch[1], 10)
+                : null;
               return (
                 <div
                   key={index}
@@ -103,29 +116,94 @@ const EducationSection = () => {
                       } ${isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'}`}
                       style={isVisible ? { animationDelay: `${index * 150}ms` } : undefined}
                     >
-                      <div className="flex items-start gap-4">
-                        <div className={`p-3 rounded-xl ${edu.isCurrent ? 'bg-primary text-primary-foreground' : 'bg-secondary text-primary'} transition-all`}>
-                          <IconComponent className="w-6 h-6" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            {edu.isCurrent && (
+                      {edu.isCurrent ? (
+                        <div className="flex items-start gap-4">
+                          <div className="p-3 rounded-xl bg-primary text-primary-foreground transition-all">
+                            <IconComponent className="w-6 h-6" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
                               <span className="px-2 py-0.5 text-xs font-mono bg-primary/20 text-primary rounded-full">
                                 Current
                               </span>
-                            )}
-                          </div>
-                          <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
-                            {edu.degree}
-                          </h3>
-                          <p className="text-muted-foreground mb-2">{edu.institution}</p>
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground/70">
-                            <span>{edu.location}</span>
-                            <span className="text-primary">•</span>
-                            <span className="font-mono">{edu.period}</span>
+                            </div>
+                            <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
+                              {edu.degree}
+                            </h3>
+                            <p className="text-muted-foreground mb-2">{edu.institution}</p>
+                            <div className="flex items-center gap-4 text-sm text-muted-foreground/70">
+                              <span>{edu.location}</span>
+                              <span className="text-primary">•</span>
+                              <span className="font-mono">{edu.period}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      ) : (
+                        <Dialog>
+                          <div className="flex items-start gap-4">
+                            <DialogTrigger asChild>
+                              <button
+                                type="button"
+                                className="p-3 rounded-xl bg-secondary text-primary transition-all hover:bg-primary hover:text-primary-foreground cursor-pointer"
+                              >
+                                <IconComponent className="w-6 h-6" />
+                              </button>
+                            </DialogTrigger>
+                            <div className="flex-1">
+                              <h3 className="font-semibold text-lg mb-1 group-hover:text-primary transition-colors">
+                                {edu.degree}
+                              </h3>
+                              <p className="text-muted-foreground mb-2">{edu.institution}</p>
+                              <div className="flex items-center gap-4 text-sm text-muted-foreground/70">
+                                <span>{edu.location}</span>
+                                <span className="text-primary">•</span>
+                                <span className="font-mono">{edu.period}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <DialogContent className="card-gradient border border-primary/40">
+                            <DialogHeader>
+                              <DialogTitle className="flex items-center gap-3">
+                                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                                  <IconComponent className="w-5 h-5" />
+                                </span>
+                                <span>{edu.degree}</span>
+                              </DialogTitle>
+                              <DialogDescription>
+                                {edu.institution}
+                                <span className="text-primary"> • </span>
+                                {edu.location}
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="mt-4 space-y-3 text-sm">
+                              <div className="flex justify-between">
+                                <span className="text-muted-foreground">Study Period</span>
+                                <span className="font-mono">{edu.period}</span>
+                              </div>
+                              {totalYears !== null && (
+                                <div className="flex justify-between">
+                                  <span className="text-muted-foreground">Duration</span>
+                                  <span className="font-mono text-primary">{totalYears} years</span>
+                                </div>
+                              )}
+                              {edu.group && (
+                                <div className="flex justify-between">
+                                  <span className="text-muted-foreground">Group</span>
+                                  <span className="font-mono text-primary">{edu.group}</span>
+                                </div>
+                              )}
+                              <div className="flex justify-between">
+                                <span className="text-muted-foreground">Status</span>
+                                <span className="font-mono text-accent">{edu.status}</span>
+                              </div>
+                              <p className="mt-4 text-xs text-muted-foreground/80 leading-relaxed">
+                                This flashcard shows how long I studied at this institution and
+                                marks the completion of this chapter in my academic journey.
+                              </p>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      )}
                     </div>
                   </div>
                 </div>

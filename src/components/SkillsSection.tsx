@@ -55,8 +55,7 @@ function SkillsSection() {
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="font-mono text-primary text-sm tracking-wider"> // SKILLS</span>
-        // SKILLS</span>
+            <span className="font-mono text-primary text-sm tracking-wider">// SKILLS</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
               My <span className="gradient-text">Toolkit</span>
             </h2>
@@ -112,7 +111,7 @@ function SkillsSection() {
               <Brain className="w-5 h-5 text-primary" />
               <span className="font-mono text-sm">
                 <span className="text-primary">Best Prompter</span>
-                <span className="text-muted-foreground"> - Master of AI Interactions</span>
+                <span className="text-muted-foreground"> - AI intractor </span>
               </span>
             </div>
           </div>

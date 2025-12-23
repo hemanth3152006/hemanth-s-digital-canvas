@@ -9,6 +9,7 @@ const projects = [
     tags: ['Security', 'Student Project', 'Personal Safety'],
     tech: ['React', 'Node.js', 'Security APIs'],
     image: null,
+    githubUrl: 'https://github.com/hemanth3152006/present-my-world',
   },
   {
     icon: MapPin,
@@ -17,6 +18,7 @@ const projects = [
     tags: ['Tracking', 'Student Project', 'Transportation'],
     tech: ['Web App', 'Real-time Data', 'GPS Integration'],
     image: null,
+    githubUrl: 'https://github.com/hemanth3152006/campus-companion-pro',
   },
 ];
 
@@ -48,8 +50,13 @@ const ProjectsSection = () => {
                   key={project.title}
                   className="group rounded-2xl card-gradient border border-border hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
                 >
-                  {/* Project Header with Icon */}
-                  <div className="h-48 bg-gradient-to-br from-secondary to-background flex items-center justify-center relative overflow-hidden">
+                  {/* Project Header with Icon (clickable) */}
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block h-48 bg-gradient-to-br from-secondary to-background flex items-center justify-center relative overflow-hidden cursor-pointer"
+                  >
                     <div className="absolute inset-0 cyber-grid opacity-10" />
                     <div className="relative z-10 p-6 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500 group-hover:scale-110">
                       <IconComponent className="w-16 h-16" />
@@ -60,7 +67,7 @@ const ProjectsSection = () => {
                         Student Project
                       </span>
                     </div>
-                  </div>
+                  </a>
 
                   {/* Project Content */}
                   <div className="p-6">
@@ -97,12 +104,24 @@ const ProjectsSection = () => {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                      <Button variant="outline" size="sm" className="flex-1">
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        View Project
+                      <Button variant="outline" size="sm" className="flex-1" asChild>
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          View Project
+                        </a>
                       </Button>
-                      <Button variant="ghost" size="sm">
-                        <Github className="w-4 h-4" />
+                      <Button variant="ghost" size="sm" asChild>
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github className="w-4 h-4" />
+                        </a>
                       </Button>
                     </div>
                   </div>
