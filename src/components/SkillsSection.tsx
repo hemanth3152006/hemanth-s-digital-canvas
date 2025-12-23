@@ -31,9 +31,9 @@ const skills = [
   },
   {
     icon: Brain,
-    name: 'vibe coder AI Prompt Engineering',
+    name: 'vibe coder AI Prompter',
     level: 95,
-    description: 'Best Prompter - Mastering AI interactions',
+    description: 'Best Prompter - AI interactions',
     color: 'primary',
   },
   {

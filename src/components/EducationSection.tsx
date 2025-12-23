@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { GraduationCap, School } from 'lucide-react';
 
 const educationData = [
@@ -31,8 +32,37 @@ const educationData = [
 ];
 
 const EducationSection = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section id="education" className="section-padding relative overflow-hidden bg-secondary/20">
+    <section
+      id="education"
+      ref={sectionRef}
+      className="section-padding relative overflow-hidden bg-secondary/20"
+    >
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10">
@@ -67,7 +97,12 @@ const EducationSection = () => {
 
                   {/* Content Card */}
                   <div className={`ml-20 md:ml-0 md:w-[calc(50%-3rem)] ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                    <div className={`p-6 rounded-2xl card-gradient border border-border hover:border-primary/50 transition-all duration-300 group ${edu.isCurrent ? 'glow-primary' : ''}`}>
+                    <div
+                      className={`p-6 rounded-2xl card-gradient border border-border hover:border-primary/50 transition-all duration-300 group ${
+                        edu.isCurrent ? 'glow-primary' : ''
+                      } ${isVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'}`}
+                      style={isVisible ? { animationDelay: `${index * 150}ms` } : undefined}
+                    >
                       <div className="flex items-start gap-4">
                         <div className={`p-3 rounded-xl ${edu.isCurrent ? 'bg-primary text-primary-foreground' : 'bg-secondary text-primary'} transition-all`}>
                           <IconComponent className="w-6 h-6" />
