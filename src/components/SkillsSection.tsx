@@ -36,6 +36,7 @@ const skills = [
     description: 'Best Prompter - Mastering AI interactions',
     color: 'primary',
   },
+  {
     icon: Wrench,
     name: 'Creative Problem Solving',
     level: 88,
@@ -54,8 +55,7 @@ function SkillsSection() {
         <div className="max-w-5xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="font-mono text-primary text-sm tracking-wider"> // SKILLS</span>
-        // SKILLS</span>
+            <span className="font-mono text-primary text-sm tracking-wider">// SKILLS</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-4 mb-6">
               My <span className="gradient-text">Toolkit</span>
             </h2>
