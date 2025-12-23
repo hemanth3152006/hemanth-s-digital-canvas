@@ -50,6 +50,11 @@ const Navbar = () => {
           </Button>
         </div>
 
+        {/* Disclaimer - always visible at start */}
+        <div className="py-2 px-4 text-center text-xs md:text-sm font-medium text-foreground bg-primary/10 border-t border-border">
+          Tip: Scroll down to the Experience section and click the  logos to open interactive flashcards.
+        </div>
+
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="lg:hidden py-4 border-t border-border animate-slide-up">

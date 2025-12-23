@@ -1,4 +1,12 @@
-import { Briefcase, Rocket, Code } from 'lucide-react';
+import { Rocket, Code } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './ui/dialog';
 
 const experiences = [
   {
@@ -6,8 +14,8 @@ const experiences = [
     title: 'Intern',
     company: 'Z1 Study Abroad',
     type: 'Startup',
-    duration: '1 Month',
-    description: 'Gained exposure to startup culture, tech support, and real-world problem solving in a fast-paced environment.',
+    duration: '30 days (June 1 – June 30)',
+    description: 'Completed a 30-day internship from June 1 to June 30, gaining exposure to startup culture, tech support, and real-world problem solving in a fast-paced environment.',
     skills: ['Startup Culture', 'Tech Support', 'Problem Solving'],
   },
   {
@@ -15,8 +23,8 @@ const experiences = [
     title: 'Intern',
     company: '8Queens Software Technology',
     type: 'Software Company',
-    duration: '1 Month',
-    description: 'Gained hands-on experience with software development practices and industry-standard workflows.',
+    duration: '15 days (Dec 8 – Dec 26)',
+    description: 'Completed a 15-day internship from December 8 to December 26, gaining hands-on experience with software development practices and industry-standard workflows.',
     skills: ['Software Development', 'Industry Practices', 'Team Collaboration'],
   },
 ];
@@ -46,40 +54,89 @@ const ExperienceSection = () => {
                   key={index}
                   className="group p-6 rounded-2xl card-gradient border border-border hover:border-primary/50 transition-all duration-500 hover:-translate-y-2"
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                      <IconComponent className="w-6 h-6" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="px-2 py-0.5 text-xs font-mono bg-accent/20 text-accent rounded-full">
-                          {exp.type}
-                        </span>
-                        <span className="text-xs text-muted-foreground font-mono">
-                          {exp.duration}
-                        </span>
+                  <Dialog>
+                    <div className="flex items-start gap-4 mb-4">
+                      <DialogTrigger asChild>
+                        <button
+                          type="button"
+                          className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all cursor-pointer"
+                          aria-label={`Open ${exp.title} flashcard for ${exp.company}`}
+                        >
+                          <IconComponent className="w-6 h-6" />
+                        </button>
+                      </DialogTrigger>
+                      <div className="flex-1 text-left">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="px-2 py-0.5 text-xs font-mono bg-accent/20 text-accent rounded-full">
+                            {exp.type}
+                          </span>
+                          <span className="text-xs text-muted-foreground font-mono">
+                            {exp.duration}
+                          </span>
+                        </div>
+                        <h3 className="font-semibold text-xl group-hover:text-primary transition-colors">
+                          {exp.title}
+                        </h3>
+                        <p className="text-muted-foreground">{exp.company}</p>
                       </div>
-                      <h3 className="font-semibold text-xl group-hover:text-primary transition-colors">
-                        {exp.title}
-                      </h3>
-                      <p className="text-muted-foreground">{exp.company}</p>
                     </div>
-                  </div>
 
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {exp.description}
-                  </p>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
+                      {exp.description}
+                    </p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1 text-xs font-mono bg-secondary/50 text-muted-foreground rounded-full border border-border"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1 text-xs font-mono bg-secondary/50 text-muted-foreground rounded-full border border-border"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+
+                    <DialogContent className="card-gradient border border-primary/40">
+                      <DialogHeader>
+                        <DialogTitle className="flex items-center gap-3">
+                          <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary/15 text-primary">
+                            <IconComponent className="w-5 h-5" />
+                          </span>
+                          <span>{exp.title} – {exp.company}</span>
+                        </DialogTitle>
+                        <DialogDescription>
+                          <span className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                            {exp.type}
+                          </span>
+                          <span className="text-primary"> • </span>
+                          <span className="font-mono text-xs text-muted-foreground">{exp.duration}</span>
+                        </DialogDescription>
+                      </DialogHeader>
+                      <div className="mt-4 space-y-3 text-sm">
+                        <p className="text-muted-foreground leading-relaxed">
+                          {exp.description}
+                        </p>
+                        <div>
+                          <span className="text-xs font-mono text-muted-foreground uppercase tracking-wide">
+                            Key Skills
+                          </span>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {exp.skills.map((skill) => (
+                              <span
+                                key={skill}
+                                className="px-3 py-1 text-xs font-mono bg-secondary/50 text-muted-foreground rounded-full border border-border"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                        <p className="mt-2 text-xs text-muted-foreground/80 leading-relaxed">
+                          This flashcard summarizes my responsibilities, learning outcomes, and core skills developed during this internship.
+                        </p>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
                 </div>
               );
             })}
