@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Shield } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -16,8 +17,31 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [hideOnScroll, setHideOnScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 120) {
+        setHideOnScroll(true);
+      } else {
+        setHideOnScroll(false);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border transition-transform duration-300 ${hideOnScroll ? '-translate-y-full' : 'translate-y-0'}`}
+      >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
           <a href="#home" className="flex items-center gap-2 group">
@@ -26,17 +50,48 @@ const Navbar = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+          <div className="hidden lg:flex items-center gap-4">
+            <div className="flex items-center gap-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative group"
+                >
+                  {link.label}
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                </a>
+              ))}
+
+              {/* Blog link as a route */}
+              <Link
+                to="/blog"
                 className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative group"
               >
-                {link.label}
+                Blog
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
+              </Link>
+            </div>
+
+            {/* Always-visible CTAs */}
+            <div className="flex items-center gap-2">
+              <Button variant="hero" size="sm" asChild>
+                <a href="#contact" aria-label="Contact Hemanth from navigation">
+                  Contact Me
+                </a>
+              </Button>
+              <Button variant="cyber" size="sm" asChild>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  download
+                  aria-label="Download Hemanth's resume from navigation"
+                >
+                  Download Resume
+                </a>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -48,11 +103,6 @@ const Navbar = () => {
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </Button>
-        </div>
-
-        {/* Disclaimer - always visible at start */}
-        <div className="py-2 px-4 text-center text-xs md:text-sm font-medium text-foreground bg-primary/10 border-t border-border">
-          Tip: Scroll down to the Experience section and click the  logos to open interactive flashcards.
         </div>
 
         {/* Mobile Navigation */}
@@ -69,11 +119,59 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
+
+              {/* Mobile Blog link */}
+              <Link
+                to="/blog"
+                className="px-4 py-3 text-muted-foreground hover:text-primary hover:bg-secondary/50 rounded-lg transition-all duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                Blog
+              </Link>
+            </div>
+
+            {/* Mobile CTAs pinned at bottom of menu */}
+            <div className="mt-4 flex flex-col gap-2">
+              <Button variant="hero" size="lg" asChild>
+                <a
+                  href="#contact"
+                  aria-label="Contact Hemanth from mobile navigation"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Contact Me
+                </a>
+              </Button>
+              <Button variant="cyber" size="lg" asChild>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  download
+                  aria-label="Download Hemanth's resume from mobile navigation"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Download Resume
+                </a>
+              </Button>
             </div>
           </div>
         )}
       </div>
-    </nav>
+      </nav>
+
+      {/* Floating 3-line button shown when navbar is hidden on scroll */}
+      {hideOnScroll && (
+        <Button
+          variant="ghost"
+          size="icon"
+          className="fixed top-3 right-4 z-40 rounded-full bg-background/90 border border-border shadow-lg hover:bg-secondary/80"
+          onClick={scrollToTop}
+          aria-label="Open navigation"
+        >
+          <Menu className="w-6 h-6" />
+        </Button>
+      )}
+    </>
   );
 };
 

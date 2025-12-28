@@ -1,4 +1,5 @@
 import { Rocket, Code } from 'lucide-react';
+import { Button } from './ui/button';
 import {
   Dialog,
   DialogContent,
@@ -17,6 +18,8 @@ const experiences = [
     duration: '30 days (June 1 – June 30)',
     description: 'Completed a 30-day internship from June 1 to June 30, gaining exposure to startup culture, tech support, and real-world problem solving in a fast-paced environment.',
     skills: ['Startup Culture', 'Tech Support', 'Problem Solving'],
+    certificateUrl:
+      'https://ik.imagekit.io/hemanth/intern%20certificate/Red%20Professional%20Certificate%20of%20Completion%20salto.png',
   },
   {
     icon: Code,
@@ -26,6 +29,27 @@ const experiences = [
     duration: '15 days (Dec 8 – Dec 26)',
     description: 'Completed a 15-day internship from December 8 to December 26, gaining hands-on experience with software development practices and industry-standard workflows.',
     skills: ['Software Development', 'Industry Practices', 'Team Collaboration'],
+    certificateUrl: 'https://example.com/8queens-internship-certificate', // TODO: replace with real certificate link
+  },
+  {
+    icon: Rocket,
+    title: 'Participant',
+    company: 'Loyola College Symposium',
+    type: 'Symposium',
+    duration: '1 day',
+    description:
+      'Attended a technical symposium at Loyola College, exploring sessions on emerging technologies, cybersecurity, and innovation while connecting with peers from different institutions.',
+    skills: ['Tech Talks', 'Networking', 'Industry Exposure'],
+  },
+  {
+    icon: Code,
+    title: 'Participant',
+    company: 'SRM KTR Campus – 24h Hackathon',
+    type: 'Hackathon',
+    duration: '24-hour Hackathon',
+    description:
+      'Participated in a 24-hour hackathon at SRM Kattankulathur (KTR) campus, collaborating with teammates to brainstorm, prototype, and present a solution under time pressure.',
+    skills: ['Hackathon Experience', 'Teamwork', 'Problem Solving', 'Time Management'],
   },
 ];
 
@@ -131,6 +155,20 @@ const ExperienceSection = () => {
                             ))}
                           </div>
                         </div>
+                        {exp.certificateUrl && (
+                          <div className="pt-2">
+                            <Button variant="hero" size="sm" asChild>
+                              <a
+                                href={exp.certificateUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`View certificate for ${exp.title} at ${exp.company}`}
+                              >
+                                View Certificate
+                              </a>
+                            </Button>
+                          </div>
+                        )}
                         <p className="mt-2 text-xs text-muted-foreground/80 leading-relaxed">
                           This flashcard summarizes my responsibilities, learning outcomes, and core skills developed during this internship.
                         </p>
