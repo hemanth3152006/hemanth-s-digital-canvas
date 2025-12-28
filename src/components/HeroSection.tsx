@@ -1,4 +1,5 @@
 import { ChevronDown, ArrowRight, Code2, Shield, Sparkles, Mail, Download } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { Button } from './ui/button';
 
 const HeroSection = () => {
@@ -8,6 +9,8 @@ const HeroSection = () => {
       <div className="absolute inset-0 cyber-grid opacity-20" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-float animation-delay-400" />
+
+      {/* (Floating emoji decorations removed as requested) */}
       
       <div className="container mx-auto px-4 pt-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -71,20 +74,43 @@ const HeroSection = () => {
             </Button>
           </div>
 
-          {/* Quick Stats */}
+          {/* Quick Stats with tooltips */}
           <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto animate-fade-in animation-delay-600">
-            <div className="flex flex-col items-center p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 transition-colors">
-              <Code2 className="w-6 h-6 text-primary mb-2" />
-              <span className="text-xs text-muted-foreground">Full-Stack</span>
-            </div>
-            <div className="flex flex-col items-center p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 transition-colors">
-              <Shield className="w-6 h-6 text-primary mb-2" />
-              <span className="text-xs text-muted-foreground">Cyber Security</span>
-            </div>
-            <div className="flex flex-col items-center p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 transition-colors">
-              <Sparkles className="w-6 h-6 text-primary mb-2" />
-              <span className="text-xs text-muted-foreground">Creative</span>
-            </div>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="flex flex-col items-center p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70">
+                  <Code2 className="w-6 h-6 text-primary mb-2" />
+                  <span className="text-xs text-muted-foreground">Full-Stack</span>
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>I build end-to-end web apps from UI to backend.</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="flex flex-col items-center p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70">
+                  <Shield className="w-6 h-6 text-primary mb-2" />
+                  <span className="text-xs text-muted-foreground">Cyber Security</span>
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Focused on secure coding and defense-first thinking.</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="flex flex-col items-center p-4 rounded-xl bg-secondary/30 border border-border hover:border-primary/50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/70">
+                  <Sparkles className="w-6 h-6 text-primary mb-2" />
+                  <span className="text-xs text-muted-foreground">Creative</span>
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>I love crafting unique, aesthetic digital experiences.</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
         </div>
 
