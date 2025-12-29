@@ -4,7 +4,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useToast } from '@/hooks/use-toast';
-import emailjs from '@emailjs/browser';
+import { supabase } from '@/integrations/supabase/client';
 const contactInfo = [
   {
     icon: Mail,
@@ -72,31 +72,21 @@ const ContactSection = () => {
     setIsLoading(true);
     
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const { error } = await (supabase as any).from('contact_messages').insert({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        message: formData.message.trim(),
+        path: window.location.pathname,
+      });
 
-      if (!serviceId || !templateId || !publicKey) {
-        console.error('EmailJS env vars missing');
-        throw new Error('Email service not configured');
+      if (error) {
+        console.error('Supabase contact insert error:', error);
+        throw error;
       }
 
-      await emailjs.send(
-        serviceId,
-        templateId,
-        {
-          from_name: formData.name.trim(),
-          from_email: formData.email.trim(),
-          message: formData.message.trim(),
-        },
-        {
-          publicKey,
-        }
-      );
-
       toast({
-        title: "Message Sent!",
-        description: "Thanks for reaching out! I'll get back to you soon.",
+        title: "Message received!",
+        description: "Thanks for reaching out! I'll check your message soon.",
       });
       setFormData({ name: '', email: '', message: '' });
     } catch (error: any) {

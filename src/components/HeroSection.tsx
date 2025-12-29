@@ -46,32 +46,53 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up animation-delay-600">
             {/* Primary CTA - Contact */}
-            <Button variant="cyber" size="xl" asChild>
-              <a href="#contact" aria-label="Contact Hemanth">
-                Contact Me
-                <Mail className="w-5 h-5" />
-              </a>
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="cyber" size="xl" asChild>
+                  <a href="#contact" aria-label="Contact Hemanth">
+                    Contact Me
+                    <Mail className="w-5 h-5" />
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                Let&apos;s collaborate or discuss opportunities.
+              </TooltipContent>
+            </Tooltip>
             {/* Secondary CTA - View Portfolio */}
-            <Button variant="hero" size="xl" asChild>
-              <a href="#projects" aria-label="View Hemanth's projects">
-                View Portfolio
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="hero" size="xl" asChild>
+                  <a href="#projects" aria-label="View Hemanth's projects">
+                    View Portfolio
+                    <ArrowRight className="w-5 h-5" />
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                Explore featured projects and case studies.
+              </TooltipContent>
+            </Tooltip>
             {/* Tertiary CTA - Download Resume */}
-            <Button variant="glow" size="xl" asChild>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                download
-                aria-label="Download Hemanth's resume as PDF"
-              >
-                Download Resume
-                <Download className="w-5 h-5" />
-              </a>
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="glow" size="xl" asChild>
+                  <a
+                    href="/resume.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    download
+                    aria-label="Download Hemanth's resume as PDF"
+                  >
+                    Download Resume
+                    <Download className="w-5 h-5" />
+                  </a>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                Get a copy of my resume.
+              </TooltipContent>
+            </Tooltip>
           </div>
 
           {/* Quick Stats with tooltips */}

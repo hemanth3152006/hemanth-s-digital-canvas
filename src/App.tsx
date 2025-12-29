@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import PortfolioJourney from "./pages/PortfolioJourney";
 import UpcomingBlog from "./pages/UpcomingBlog";
+import VibeCoderMindset from "./pages/VibeCoderMindset";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/portfolio-journey" element={<PortfolioJourney />} />
             <Route path="/blog/upcoming" element={<UpcomingBlog />} />
+            <Route path="/blog/vibe-coder-mindset" element={<VibeCoderMindset />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
+import { BlogFeedback } from '@/components/BlogFeedback';
 
 const PortfolioJourney = () => {
   return (
@@ -101,13 +102,12 @@ const PortfolioJourney = () => {
             </article>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild variant="hero">
-                <a href="#contact">Contact Me</a>
-              </Button>
               <Button asChild variant="outline">
                 <Link to="/blog">Back to Blog</Link>
               </Button>
             </div>
+
+            <BlogFeedback slug="building-my-personal-portfolio" />
           </section>
         </main>
 

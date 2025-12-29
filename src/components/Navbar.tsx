@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Shield } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { Button } from './ui/button';
 
 const navLinks = [
@@ -53,44 +54,72 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-4">
             <div className="flex items-center gap-1">
               {navLinks.map((link) => (
-                <Link
-                  key={link.id}
-                  to={`/#${link.id}`}
-                  className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative group"
-                >
-                  {link.label}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                </Link>
+                <Tooltip key={link.id}>
+                  <TooltipTrigger asChild>
+                    <Link
+                      to={`/#${link.id}`}
+                      className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative group"
+                    >
+                      {link.label}
+                      <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    Jump to the {link.label} section
+                  </TooltipContent>
+                </Tooltip>
               ))}
 
               {/* Blog link as a route */}
-              <Link
-                to="/blog"
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative group"
-              >
-                Blog
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-              </Link>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    to="/blog"
+                    className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-300 relative group"
+                  >
+                    Blog
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  Read my latest learning notes
+                </TooltipContent>
+              </Tooltip>
             </div>
 
             {/* Always-visible CTAs */}
             <div className="flex items-center gap-2">
-              <Button variant="hero" size="sm" asChild>
-                <Link to="/#contact" aria-label="Contact Hemanth from navigation">
-                  Contact Me
-                </Link>
-              </Button>
-              <Button variant="cyber" size="sm" asChild>
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  download
-                  aria-label="Download Hemanth's resume from navigation"
-                >
-                  Download Resume
-                </a>
-              </Button>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="hero" size="sm" asChild>
+                    <Link to="/#contact" aria-label="Contact Hemanth from navigation">
+                      Contact Me
+                    </Link>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  Open the contact form
+                </TooltipContent>
+              </Tooltip>
+
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button variant="cyber" size="sm" asChild>
+                    <a
+                      href="/resume.pdf"
+                      target="_blank"
+                      rel="noreferrer"
+                      download
+                      aria-label="Download Hemanth's resume from navigation"
+                    >
+                      Download Resume
+                    </a>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent side="bottom">
+                  Download my latest resume as PDF
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
 

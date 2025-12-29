@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
+import { BlogFeedback } from '@/components/BlogFeedback';
 
 const UpcomingBlog = () => {
   return (
@@ -36,10 +37,9 @@ const UpcomingBlog = () => {
               <Button asChild variant="hero">
                 <Link to="/blog">Browse other blogs</Link>
               </Button>
-              <Button asChild variant="outline">
-                <a href="/#contact">Contact me</a>
-              </Button>
             </div>
+
+            <BlogFeedback slug="weekly-learning-log-01" />
           </section>
         </main>
 

@@ -28,11 +28,11 @@ const posts = [
   {
     slug: 'vibe-coder-mindset',
     title: 'The Vibe Coder Mindset',
-    date: 'Coming soon',
-    readingTime: '—',
+    date: 'December 2025',
+    readingTime: '5 min read',
     tags: ['Mindset', 'Career', 'Student Life'],
     summary:
-      'Thoughts on learning, staying curious, and balancing college, security, and creative projects. Stay tuned!',
+      "A last-bencher's take on vibe-coding with AI agents — building, breaking, fixing, and finding your own flow while working on real projects.",
   },
 ];
 
@@ -100,16 +100,34 @@ const Blog = () => {
                   <CardFooter className="pt-2 flex items-center justify-between">
                     <p className="text-xs text-muted-foreground/80">
                       Detailed write-ups coming soon. For now, explore my{' '}
-                      <a href="/" className="underline underline-offset-4 text-primary hover:text-primary/80">
-                        projects and services
-                      </a>
+                      <Link
+                        to="/#projects"
+                        className="underline underline-offset-4 text-primary hover:text-primary/80"
+                      >
+                        projects
+                      </Link>{' '}
+                      and{' '}
+                      <Link
+                        to="/#services"
+                        className="underline underline-offset-4 text-primary hover:text-primary/80"
+                      >
+                        services
+                      </Link>
                       .
                     </p>
-                    {post.slug === 'building-my-personal-portfolio' ? (
+                    {post.slug === 'building-my-personal-portfolio' && (
                       <Button variant="link" size="sm" asChild>
                         <Link to="/portfolio-journey">Behind the scenes →</Link>
                       </Button>
-                    ) : (
+                    )}
+
+                    {post.slug === 'vibe-coder-mindset' && (
+                      <Button variant="link" size="sm" asChild>
+                        <Link to="/blog/vibe-coder-mindset">Read blog →</Link>
+                      </Button>
+                    )}
+
+                    {post.slug === 'weekly-learning-log-01' && (
                       <Button variant="link" size="sm" asChild>
                         <Link to="/blog/upcoming">This blog is upcoming →</Link>
                       </Button>
