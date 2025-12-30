@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Shield } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { Button } from './ui/button';
@@ -19,6 +19,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [hideOnScroll, setHideOnScroll] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +40,14 @@ const Navbar = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleLogoClick = () => {
+    if (location.pathname === '/') {
+      scrollToTop();
+    } else {
+      navigate('/');
+    }
+  };
+
   return (
     <>
       <nav
@@ -45,10 +55,14 @@ const Navbar = () => {
       >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-2 group">
+          <button
+            type="button"
+            onClick={handleLogoClick}
+            className="flex items-center gap-2 group focus:outline-none"
+          >
             <Shield className="w-8 h-8 text-primary group-hover:animate-pulse-glow transition-all" />
             <span className="font-mono text-lg font-bold gradient-text">HG</span>
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-4">

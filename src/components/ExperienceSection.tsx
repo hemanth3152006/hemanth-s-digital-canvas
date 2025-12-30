@@ -29,7 +29,7 @@ const experiences = [
     duration: '15 days (Dec 8 – Dec 26)',
     description: 'Completed a 15-day internship from December 8 to December 26, gaining hands-on experience with software development practices and industry-standard workflows.',
     skills: ['Software Development', 'Industry Practices', 'Team Collaboration'],
-    certificateUrl: 'https://example.com/8queens-internship-certificate', // TODO: replace with real certificate link
+    certificateUrl: 'https://ik.imagekit.io/hemanth/intern%20certificate/8-Queens-Internship-Certificate.pdf', // TODO: replace with real certificate link
   },
   {
     icon: Rocket,
