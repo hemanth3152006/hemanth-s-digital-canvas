@@ -8,13 +8,13 @@ import { Button } from '@/components/ui/button';
 
 const posts = [
   {
-    slug: 'weekly-learning-log-01',
-    title: 'Weekly Learning Log #1 – Cyber Security & Full-Stack Basics',
+    slug: 'fractured-prism',
+    title: 'Fractured Prism – How ChatGPT Sees Hemanth',
     date: 'December 2025',
-    readingTime: '3 min read',
-    tags: ['Cyber Security', 'React', 'Learning Journey'],
+    readingTime: '4 min read',
+    tags: ['Identity', 'Mindset', 'AI Perspective'],
     summary:
-      "A quick recap of what I explored this week – from basic web security concepts to improving this portfolio with React and TypeScript.",
+      'A creative reflection written from ChatGPT\'s point of view about Hemanth\'s identity, mindset, and how he turns chaos into patterns.',
   },
   {
     slug: 'building-my-personal-portfolio',
@@ -33,6 +33,15 @@ const posts = [
     tags: ['Mindset', 'Career', 'Student Life'],
     summary:
       "A last-bencher's take on vibe-coding with AI agents — building, breaking, fixing, and finding your own flow while working on real projects.",
+  },
+  {
+    slug: 'perfection-in-progress',
+    title: "Perfection in Progress – Hemanth's Perspective",
+    date: 'December 2025',
+    readingTime: '4 min read',
+    tags: ['Mindset', 'Perfection', 'Student Life'],
+    summary:
+      'How I define perfection as a student: not flawless results, but continuous learning, clarity, creativity, and real-world impact.',
   },
 ];
 
@@ -64,6 +73,7 @@ const Blog = () => {
               <p className="text-muted-foreground max-w-2xl mx-auto">
                 Short write-ups about what I&apos;m building, learning in cyber security and full-stack
                 development, and the mindset behind being a vibe coder.
+                !! select the emoji that resonates with you the most !!
               </p>
             </header>
 
@@ -123,13 +133,19 @@ const Blog = () => {
 
                     {post.slug === 'vibe-coder-mindset' && (
                       <Button variant="link" size="sm" asChild>
-                        <Link to="/blog/vibe-coder-mindset">Read blog →</Link>
+                        <Link to="/blog/vibe-coder-mindset">Read Mindset →</Link>
                       </Button>
                     )}
 
-                    {post.slug === 'weekly-learning-log-01' && (
+                    {post.slug === 'fractured-prism' && (
                       <Button variant="link" size="sm" asChild>
-                        <Link to="/blog/upcoming">This blog is upcoming →</Link>
+                        <Link to="/blog/fractured-prism">Read blog →</Link>
+                      </Button>
+                    )}
+
+                    {post.slug === 'perfection-in-progress' && (
+                      <Button variant="link" size="sm" asChild>
+                        <Link to="/blog/perfection-in-progress">Read blog →</Link>
                       </Button>
                     )}
                   </CardFooter>

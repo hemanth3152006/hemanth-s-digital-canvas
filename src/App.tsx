@@ -10,6 +10,8 @@ import Blog from "./pages/Blog";
 import PortfolioJourney from "./pages/PortfolioJourney";
 import UpcomingBlog from "./pages/UpcomingBlog";
 import VibeCoderMindset from "./pages/VibeCoderMindset";
+import FracturedPrism from "./pages/FracturedPrism";
+import PerfectionInProgress from "./pages/PerfectionInProgress";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +51,8 @@ const App = () => (
             <Route path="/portfolio-journey" element={<PortfolioJourney />} />
             <Route path="/blog/upcoming" element={<UpcomingBlog />} />
             <Route path="/blog/vibe-coder-mindset" element={<VibeCoderMindset />} />
+            <Route path="/blog/fractured-prism" element={<FracturedPrism />} />
+            <Route path="/blog/perfection-in-progress" element={<PerfectionInProgress />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
