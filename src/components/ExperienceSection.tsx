@@ -51,6 +51,17 @@ const experiences = [
       'Participated in a 24-hour hackathon at SRM Kattankulathur (KTR) campus, collaborating with teammates to brainstorm, prototype, and present a solution under time pressure.',
     skills: ['Hackathon Experience', 'Teamwork', 'Problem Solving', 'Time Management'],
   },
+  {
+    icon: Code,
+    title: '2nd Prize Winner',
+    company: 'REVIL (OH-SIN-T) - CIT',
+    type: 'Cyber Forensics/CTF',
+    duration: 'March 2, 2026',
+    description:
+      'Secured 2nd prize in the REVIL OH-SIN-T cyber forensics challenge at Chennai Institution of Technology. Solved complex security challenges step-by-step using Kali Linux and OH-SIN-T tools in a CTF-style competition.',
+    skills: ['Kali Linux', 'Cyber Forensics', 'CTF', 'OH-SIN-T Tool', 'Security Analysis'],
+    certificateUrl: 'https://ik.imagekit.io/hemanth/intern%20certificate/CIT%20%20wining%20certify.png',
+  },
 ];
 
 const ExperienceSection = () => {
