@@ -14,12 +14,23 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Hemanth G | Cyber Security Student & Full-Stack Developer</title>
-        <meta name="description" content="Portfolio of Hemanth G - Undergraduate Cyber Security Student, Full-Stack Enthusiast, and Vibe Coder based in Chennai. Explore my projects, skills, and services." />
-        <meta name="keywords" content="Hemanth G, Cyber Security, Full-Stack Developer, Web Developer, Chennai, Portfolio, Vibe Coder" />
-        <meta property="og:title" content="Hemanth G | Cyber Security Student & Developer" />
-        <meta property="og:description" content="Portfolio of Hemanth G - Undergraduate Cyber Security Student and Full-Stack Enthusiast." />
+        <title>Hemanth G | Cyber Security Student & Full-Stack Developer - Portfolio</title>
+        <meta name="description" content="Hemanth G's portfolio - Undergraduate Cyber Security Student, Full-Stack Developer, and Vibe Coder from Chennai. View projects, skills, expertise, and services in web development and cyber security." />
+        <meta name="keywords" content="Hemanth G, Hemanth, Cyber Security, Full-Stack Developer, Web Developer, Chennai, Portfolio, Vibe Coder, Software Engineer, Security Enthusiast, React Developer, Node.js, Web Security, Application Development" />
+        <meta name="author" content="Hemanth G" />
+        <meta property="og:title" content="Hemanth G | Cyber Security Student & Full-Stack Developer" />
+        <meta property="og:description" content="Explore Hemanth G's portfolio - Undergraduate Cyber Security Student, Full-Stack Developer, and Vibe Coder. Specializing in web development and cyber security." />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hemanthg.dev" />
+        <meta property="og:image" content="https://ibb.co/ns0gt0dv" />
+        <meta property="og:site_name" content="Hemanth G - Portfolio" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@hemanthg" />
+        <meta name="twitter:creator" content="@hemanthg" />
+        <meta name="twitter:title" content="Hemanth G | Cyber Security Student & Full-Stack Developer" />
+        <meta name="twitter:description" content="Hemanth G's portfolio - Undergraduate Cyber Security Student, Full-Stack Developer, and Vibe Coder" />
+        <meta name="twitter:image" content="https://ibb.co/ns0gt0dv" />
+        <meta property="og:url" content="https://hemanthg.dev" />
         <link rel="canonical" href="https://hemanthg.dev" />
       </Helmet>
 

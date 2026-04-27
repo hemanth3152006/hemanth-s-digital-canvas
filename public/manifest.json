@@ -1,0 +1,35 @@
+{
+  "name": "Hemanth G - Cyber Security Student & Full-Stack Developer",
+  "short_name": "Hemanth G",
+  "description": "Portfolio of Hemanth G - Undergraduate Cyber Security Student, Full-Stack Developer, and Vibe Coder from Chennai",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://ibb.co/ns0gt0dv",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://ibb.co/ns0gt0dv",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "https://ibb.co/ns0gt0dv",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["technology", "business"],
+  "keywords": ["Hemanth G", "Cyber Security", "Full-Stack Developer", "Portfolio", "Web Development"],
+  "screenshots": []
+}
