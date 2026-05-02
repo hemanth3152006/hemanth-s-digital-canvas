@@ -31,5 +31,15 @@
   ],
   "categories": ["technology", "business"],
   "keywords": ["Hemanth G", "Cyber Security", "Full-Stack Developer", "Portfolio", "Web Development"],
+  "patents": [
+    {
+      "name": "CAMP'360",
+      "number": "202641045851 A",
+      "registrationDate": "09/04/2026",
+      "patentOffice": "INDIA",
+      "description": "CAMP'360 is a software-defined, multi-modular campus governance system that utilizes a distributed mobile-node architecture as the sole data acquisition layer, replacing traditional physical IoT infrastructure. The system leverages the native hardware peripherals of user smartphones (GPS, Wi-Fi, and Biometrics) to create a virtualized sensor network for real-time institutional management. This integrated ecosystem facilitates device-less transit telemetry via driver-side mobiles, enforces network-bound attendance validation restricted to authorized institutional Wi-Fi IP addresses, and centralizes academic workflows. Furthermore, the system includes integrated modules for cashless campus commerce, dietary tracking, and robust feedback loops, fusing administrative, safety, and logistical data into a unified, secure mobile interface to enhance operational efficiency and transparency within the educational environments.",
+      "diagramUrl": "https://ibb.co/your-diagram-link"
+    }
+  ],
   "screenshots": []
 }
