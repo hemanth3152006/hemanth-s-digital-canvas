@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { HelmetProvider } from 'react-helmet-async';
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import PortfolioJourney from "./pages/PortfolioJourney";
@@ -43,6 +44,15 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        {/* Interactive Cursor Effect */}
+        {/* Scroll to Top Button */}
+        <ScrollToTop />
+        
+        {/* Global Background Blobs */}
+        <div className="bg-blob-1" />
+        <div className="bg-blob-2" />
+        <div className="bg-blob-3" />
+        
         <BrowserRouter>
           <ScrollToHash />
           <Routes>

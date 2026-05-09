@@ -3,11 +3,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Shield } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { Button } from './ui/button';
+import ThemeToggle from './ThemeToggle';
 
 const navLinks = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'education', label: 'Education' },
+  { id: 'certifications', label: 'Certifications' },
   { id: 'experience', label: 'Experience' },
   { id: 'skills', label: 'Skills' },
   { id: 'services', label: 'Services' },
@@ -103,6 +105,7 @@ const Navbar = () => {
 
             {/* Always-visible CTAs */}
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button variant="hero" size="sm" asChild>

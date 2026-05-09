@@ -1,5 +1,6 @@
 import { Award, Calendar, MapPin, FileText } from 'lucide-react';
 import { Button } from './ui/button';
+import './PatentsSection.css';
 
 const patents = [
   {
@@ -31,8 +32,14 @@ const patents = [
 
 const PatentsSection = () => {
   return (
-    <section id="patents" className="section-padding relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+    <section id="patents" className="section-padding relative overflow-hidden bg-gradient-to-b from-background via-background/50 to-background">
+      {/* Animated Background Elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-blob" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-blob-delayed" />
+      <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-primary/3 rounded-full blur-3xl animate-pulse opacity-50" />
+      
+      {/* Cyber Grid Background */}
+      <div className="absolute inset-0 cyber-grid opacity-5" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
@@ -55,7 +62,7 @@ const PatentsSection = () => {
               return (
                 <div
                   key={patent.title}
-                  className="group rounded-2xl card-gradient border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden"
+                  className="group rounded-2xl card-gradient border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden patent-card"
                 >
                   <div className="p-8 md:p-10">
                     {/* Header with Icon and Status */}
@@ -169,7 +176,7 @@ const PatentsSection = () => {
                         <h4 className="font-semibold mb-4 text-foreground">Patent Claimants:</h4>
                         <div className="flex flex-wrap gap-3">
                           {patent.inventors.map((inventor, idx) => (
-                            <div key={idx} className="px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 text-foreground font-medium text-sm">
+                            <div key={idx} className="inventor-badge px-4 py-2 rounded-lg bg-primary/10 border border-primary/30 text-foreground font-medium text-sm">
                               {inventor}
                             </div>
                           ))}
