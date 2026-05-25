@@ -1,4 +1,4 @@
-import { Shield, MapPin, ExternalLink, Github } from 'lucide-react';
+import { Shield, MapPin, Activity, ExternalLink, Github } from 'lucide-react';
 import { Button } from './ui/button';
 
 const projects = [
@@ -19,6 +19,15 @@ const projects = [
     tech: ['Web App', 'Real-time Data', 'GPS Integration'],
     image: null,
     githubUrl: 'https://github.com/hemanth3152006/campus-companion-pro',
+  },
+  {
+    icon: Activity,
+    title: 'Network Traffic Monitor',
+    description: 'A full-stack network monitoring tool with real-time packet capture and analysis. Features a Python backend with Scapy for packet sniffing, secure user authentication, and a responsive PHP web dashboard for visualizing traffic statistics, logs, and protocol analytics.',
+    tags: ['Networking', 'Full-Stack', 'Real-time Analysis'],
+    tech: ['Python', 'Scapy', 'PHP', 'MySQL'],
+    image: null,
+    githubUrl: 'https://github.com/hemanth3152006/NetworkMonitor',
   },
 ];
 
