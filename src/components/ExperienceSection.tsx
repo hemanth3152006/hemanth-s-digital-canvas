@@ -9,7 +9,24 @@ import {
   DialogTrigger,
 } from './ui/dialog';
 
+const publicAsset = (path: string) =>
+  `${import.meta.env.BASE_URL}${path
+    .replace(/^\/+/, '')
+    .split('/')
+    .map((segment) => encodeURIComponent(segment))
+    .join('/')}`;
+
 const experiences = [
+  {
+    icon: Rocket,
+    title: 'Intern',
+    company: 'INETZ',
+    type: 'Internship',
+    duration: 'Certificate',
+    description: 'Received an internship certificate from INETZ recognizing my contribution and participation during the internship period.',
+    skills: ['Internship', 'Professional Exposure', 'Certificate'],
+    certificateUrl: publicAsset('certificates/inetz intern certify.pdf'),
+  },
   {
     icon: Rocket,
     title: 'Intern',

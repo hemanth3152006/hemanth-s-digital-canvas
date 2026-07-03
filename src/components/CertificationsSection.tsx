@@ -9,15 +9,22 @@ import {
   DialogTrigger,
 } from './ui/dialog';
 
+const publicAsset = (path: string) =>
+  `${import.meta.env.BASE_URL}${path
+    .replace(/^\/+/, '')
+    .split('/')
+    .map((segment) => encodeURIComponent(segment))
+    .join('/')}`;
+
 const certificationsData = [
   {
     title: 'AWS AI Practitioner Challenge',
     issuer: 'AWS & Udacity',
     date: 'May 9, 2026',
-    issuerLogo: '/logos/udacity-aws.png',
-    image: '/certificates/AWS AI Practitioner Challenge.png',
+    issuerLogo: publicAsset('logos/udacity-aws.png'),
+    image: publicAsset('certificates/AWS AI Practitioner Challenge.png'),
     description: 'Verified Certificate of Course Completion for the AWS AI Practitioner Challenge through Udacity. This certification demonstrates practical knowledge of AWS AI/ML services and best practices.',
-    verificationUrl: 'https://www.udacity.com/certificate/e/aaca843a-311b-1ff1-b213-ffef e5b392a1',
+    verificationUrl: 'https://www.udacity.com/certificate/e/aaca843a-311b-1ff1-b213-ffefe5b392a1',
     credentialId: 'aaca843a-311b-1ff1-b213-ffefe5b392a1',
     skills: ['AWS AI', 'Machine Learning', 'Cloud Computing', 'AI Practitioner'],
     issuerCEO: 'Kai Roemmelt',
@@ -26,8 +33,8 @@ const certificationsData = [
     title: 'AWS AI & ML Scholars',
     issuer: 'AWS & Udacity',
     date: 'May 9, 2026',
-    issuerLogo: '/logos/aws-ml-scholars.png',
-    image: '/certificates/AWS AI&ML Scholars.png',
+    issuerLogo: publicAsset('logos/aws-ml-scholars.png'),
+    image: publicAsset('certificates/AWS AI&ML Scholars.png'),
     description: '2026 Challenge Completion Badge for AWS AI & ML Scholars Program. This achievement recognizes completion of the comprehensive AWS AI and Machine Learning scholarship challenge.',
     badgeType: 'Challenge Completion',
     skills: ['AWS AI', 'Machine Learning', 'Artificial Intelligence', 'AWS Services'],
