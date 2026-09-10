@@ -26,7 +26,7 @@ const AboutSection = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-lg mb-1">Date of Birth</h3>
-                    <p className="text-muted-foreground">31 May 2006 (Age 19)</p>
+                    <p className="text-muted-foreground">31 May 2006 (Age 20)</p>
                   </div>
                 </div>
               </div>
