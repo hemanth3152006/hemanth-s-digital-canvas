@@ -1,4 +1,4 @@
-import { Shield, MapPin, Activity, ExternalLink, Github } from 'lucide-react';
+import { Shield, MapPin, Activity, Code2, ExternalLink, Github } from 'lucide-react';
 import { Button } from './ui/button';
 
 const projects = [
@@ -28,6 +28,15 @@ const projects = [
     tech: ['Python', 'Scapy', 'PHP', 'MySQL'],
     image: null,
     githubUrl: 'https://github.com/hemanth3152006/NetworkMonitor',
+  },
+  {
+    icon: Code2,
+    title: 'CTF_WEB',
+    description: 'A website featuring capture-the-flag challenges for practicing web development and cybersecurity skills.',
+    tags: ['Full-Stack', 'CTF', 'Cybersecurity'],
+    tech: ['TypeScript', 'HTML', 'Java', 'CSS'],
+    image: null,
+    githubUrl: 'https://github.com/hemanth3152006/CTF_WEBSITES.git',
   },
 ];
 
