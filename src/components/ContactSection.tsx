@@ -42,8 +42,8 @@ const socialLinks = [
   {
     icon: Instagram,
     label: 'Instagram',
-    href: 'https://instagram.com/hem.zzz.95,
-    username: 'mr_g_nobody_pvt',
+    href: 'https://instagram.com/hem.zzz.95',
+    username: 'hem.zzz.95',
   },
 ];
 
